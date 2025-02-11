@@ -1,0 +1,25 @@
+name: Simple CI Pipeline
+
+on:
+  push:
+    branches:
+      - main  # Run this workflow when you push to the main branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Use the latest Ubuntu version to run the jobs
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2  # This pulls your code from the repo
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'  # Specify Node.js version
+
+      - name: Install dependencies
+        run: npm install  # Install project dependencies
+
+      - name: Run tests
+        run: npm test  # Run the test cases
